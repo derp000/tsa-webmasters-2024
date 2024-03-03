@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       <div className="bg-background">
         <div
-          className="py-24 px-64 top-div bg-cover bg-center"
+          className="py-52 px-64 bg-cover bg-center"
           style={{ backgroundImage: `url(${galaxy})` }}
         >
           <div>
@@ -23,18 +23,26 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="bottom-div top-invert bg-white p-36">
-          <div className="grid grid-cols-2 gap-10 text-black items-center max-w-[72rem] m-auto">
-            <p className="text-xl">
+        <div className="relative bg-emerald-700 h-[45rem] py-12">
+          <div className="absolute top-[-5rem] left-0 right-0 z-10 bg-white shadow-2xl shadow-green-900 rounded-lg p-36 text-2xl w-[72rem] m-auto">
+            <p>
               FIRST is an international, not-for-profit organization that was
               founded in 1989 in Manchester, NH. FIRST had goals to inspire
               younger people to become interested in STEM. The organization
               currently has four programs that support their goal.
             </p>
-            <img src={"pics/frcLogo.png"} alt="FRC logo" />
+            <div className="bg-white mt-10 grid grid-cols-2 gap-10 text-black items-center max-w-[72rem] m-auto">
+              <p className="text-xl">
+                FIRST is an international, not-for-profit organization that was
+                founded in 1989 in Manchester, NH. FIRST had goals to inspire
+                younger people to become interested in STEM. The organization
+                currently has four programs that support their goal.
+              </p>
+              <img src={"pics/frcLogo.png"} alt="FRC logo" />
+            </div>
           </div>
         </div>
-        <div className="bottom-invert top-arrow p-24 bg-teal-950">
+        <div className="p-24 bg-teal-950">
           <div>
             <div className="flex flex-col gap-2 text-white max-w-[72rem] mx-auto mb-12">
               <h1 className="text-center text-5xl font-bold">Our Impact</h1>
