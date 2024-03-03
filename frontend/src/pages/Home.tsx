@@ -69,7 +69,7 @@ const Home = () => {
               <h1 className="text-center text-5xl font-bold">Our Impact</h1>
               <p className="text-center text-2xl leading-tight">
                 Parallel Universe is deeply committed to STEM outreach and
-                education. Team 1257 is a proud co-host of RVSTS, and its
+                education. Team 1257 is a proud co-host of RVSTS and its
                 members often volunteer at FLL events.
               </p>
             </div>
