@@ -1,4 +1,3 @@
-import BlobText from "../components/BlobText";
 import Button from "../components/Button";
 import "../embla.css";
 import galaxy from "../components/images/backgrounds/a3.png";
@@ -9,46 +8,18 @@ const Home = () => {
     <div>
       <div className="bg-background">
         <div
-          className="p-24 top-div bg-cover bg-center"
+          className="py-24 px-64 top-div bg-cover bg-center"
           style={{ backgroundImage: `url(${galaxy})` }}
         >
           <div>
-            <div className="flex flex-col gap-2 text-white max-w-[72rem] mx-auto mb-24">
-              <h1 className="text-center text-5xl font-bold">About Us</h1>
-              <p className="text-center text-2xl leading-tight">
+            <div className="flex flex-col gap-2 text-white mb-24 max-w-[72rem]">
+              <h1 className="text-left text-5xl font-bold">Homepage</h1>
+              <p className="text-left text-2xl leading-tight">
                 Team 1257 Parallel Universe is an out of this world FIRST
                 robotics team based in Scotch Plains, NJ! We strive to inspire
                 and cultivate a passion for STEM in a new generation of future
                 innovators, leaders, and entrepreneurs.
               </p>
-            </div>
-            <div className="flex flex-row justify-center max-w-[72rem] mx-auto mb-24">
-              <BlobText
-                statistic="2004"
-                description="Founded"
-                gradientL="#8c43fa"
-                gradientR="#c92eeb"
-              />
-              <BlobText
-                statistic="20+"
-                description="Awards"
-                gradientL="#8c43fa"
-                gradientR="#c92eeb"
-                invert
-              />
-              <BlobText
-                statistic="100+"
-                description="Members"
-                gradientL="#8c43fa"
-                gradientR="#c92eeb"
-              />
-            </div>
-            <div className="flex flex-col items-center">
-              <Button
-                text="Learn more"
-                style="bg-green-700 hover:bg-green-500 text-white blob-green"
-                to="/info"
-              />
             </div>
           </div>
         </div>
