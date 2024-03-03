@@ -32,7 +32,7 @@ const resourcesItems: SubtitleItemArray = [
 
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const [sticky, setSticky] = useState<string>("bg-cover bg-top sticky-bg");
+  const [sticky, setSticky] = useState<string>("bg-opacity-0");
 
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
@@ -46,13 +46,13 @@ const Navbar = () => {
     if (window !== undefined) {
       const windowHeight = window.scrollY;
       windowHeight > 24
-        ? setSticky("fixed w-full top-0 left-0 z-50 bg-emerald-900")
-        : setSticky("bg-cover bg-top sticky-bg");
+        ? setSticky("bg-opacity-100 shadow")
+        : setSticky("bg-opacity-0");
     }
   };
 
   return (
-    <nav className={`${sticky} flex lg:flex-col flex-row items-center p-4`}>
+    <nav className={`${sticky} flex lg:flex-col flex-row items-center p-4 fixed w-full top-0 z-50 bg-emerald-900 transition-duration-150`}>
       <div className="lg:hidden ml-auto text-white">
         <Popover>
           <Popover.Button>
