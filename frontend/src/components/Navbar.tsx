@@ -51,25 +51,19 @@ const Navbar = () => {
     }
   };
 
+  console.log(open);
   return (
     <nav className={`${sticky} flex lg:flex-col flex-row items-center p-4 fixed w-full top-0 z-50 bg-emerald-900 transition-duration-150`}>
       <div className="lg:hidden ml-auto text-white">
         <Popover>
           <Popover.Button>
-            <Menu size={32} color="white" onClick={() => setOpen(!open)} />
+            <Menu size={32} color="white" onClick={() => {
+              setOpen(!open);
+              }} />
           </Popover.Button>
-          <Popover.Panel className="absolute w-full top-20 right-1 z-50">
-            <div className="z-50 flex flex-col text-left text-white text-lg font-semibold tracking-tight bg-gray-900 rounded-lg">
-              <div className="p-2 m-6">
-                <Dropdown title="About" subtitles={aboutItems} />
-              </div>
+          <Popover.Panel className="absolute w-screen right-1">
+            <div className="z-50 flex flex-col text-right text-white text-lg font-semibold tracking-tight bg-emerald-900">
               <div className="p-2 m-6">Outreach</div>
-              <div className="p-2 m-6">
-                <Dropdown title="Parents" subtitles={parentsItems} />
-              </div>
-              <div className="p-2 m-6">
-                <Dropdown title="Resources" subtitles={resourcesItems} />
-              </div>
               <div className="p-2 m-6">Contact</div>
               <div className="p-2 m-6">Sponsors</div>
             </div>
@@ -77,8 +71,8 @@ const Navbar = () => {
         </Popover>
       </div>
 
-      <div className="lg:flex hidden justify-center">
-        <ul className="flex justify-between items-center gap-4 text-white text-lg font-bold">
+      <div className="lg:flex hidden w-full justify-end">
+        <ul className="flex justify-between items-center w-2/4 text-white text-lg">
           <li className="p-4">Outreach</li>
           <li className="p-4">Resources</li>
           <li className="p-4">Contact</li>
