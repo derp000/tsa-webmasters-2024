@@ -1,34 +1,10 @@
 import { useEffect, useState } from "react";
 
-import Dropdown, { SubtitleItemArray } from "./Dropdown";
-
 import { Menu } from "@emotion-icons/evaicons-solid/Menu";
 import { Popover } from "@headlessui/react";
 
 import "./Navbar.css";
 
-const aboutItems: SubtitleItemArray = [
-  { title: "Team Info", to: "info", key: "info" },
-  { title: "History", to: "history", key: "history" },
-  { title: "Awards", to: "awards", key: "awards" },
-  { title: "Leadership", to: "leadership", key: "leadership" },
-];
-
-const parentsItems: SubtitleItemArray = [
-  { title: "Forms", to: "forms", key: "forms" },
-  { title: "Wishlist", to: "wishlist", key: "wishlist" },
-  {
-    title: "Newsletter",
-    to: "https://frc1257.github.io/blog",
-    key: "newsletter",
-    external: true,
-  },
-];
-
-const resourcesItems: SubtitleItemArray = [
-  { title: "Documentation", to: "docs", key: "docs" },
-  { title: "Handbook", to: "book", key: "book" },
-];
 
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -45,6 +21,7 @@ const Navbar = () => {
   const stickNavbar = () => {
     if (window !== undefined) {
       const windowHeight = window.scrollY;
+      
       windowHeight > 24
         ? setSticky("bg-opacity-100 shadow")
         : setSticky("bg-opacity-0");
@@ -61,7 +38,7 @@ const Navbar = () => {
               setOpen(!open);
               }} />
           </Popover.Button>
-          <Popover.Panel className="absolute w-screen right-1">
+          <Popover.Panel className="absolute w-full right-1">
             <div className="z-50 flex flex-col text-right text-white text-lg font-semibold tracking-tight bg-emerald-900">
               <div className="p-2 m-6">Outreach</div>
               <div className="p-2 m-6">Contact</div>
