@@ -1,38 +1,15 @@
-import { useEffect, useState } from "react";
-
-import Dropdown, { SubtitleItemArray } from "./Dropdown";
+import { useEffect, useRef, useState } from "react";
 
 import { Menu } from "@emotion-icons/evaicons-solid/Menu";
 import { Popover } from "@headlessui/react";
 
 import "./Navbar.css";
 
-const aboutItems: SubtitleItemArray = [
-  { title: "Team Info", to: "info", key: "info" },
-  { title: "History", to: "history", key: "history" },
-  { title: "Awards", to: "awards", key: "awards" },
-  { title: "Leadership", to: "leadership", key: "leadership" },
-];
-
-const parentsItems: SubtitleItemArray = [
-  { title: "Forms", to: "forms", key: "forms" },
-  { title: "Wishlist", to: "wishlist", key: "wishlist" },
-  {
-    title: "Newsletter",
-    to: "https://frc1257.github.io/blog",
-    key: "newsletter",
-    external: true,
-  },
-];
-
-const resourcesItems: SubtitleItemArray = [
-  { title: "Documentation", to: "docs", key: "docs" },
-  { title: "Handbook", to: "book", key: "book" },
-];
 
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const [sticky, setSticky] = useState<string>("bg-cover bg-top sticky-bg");
+  const [sticky, setSticky] = useState<string>("bg-opacity-0");
+  const test = useRef(false);
 
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
@@ -45,44 +22,54 @@ const Navbar = () => {
   const stickNavbar = () => {
     if (window !== undefined) {
       const windowHeight = window.scrollY;
-      windowHeight > 24
-        ? setSticky("fixed w-full top-0 left-0 z-50 bg-emerald-900")
-        : setSticky("bg-cover bg-top sticky-bg");
+      
+      if(windowHeight > 24 || open){
+        setSticky("bg-opacity-100 shadow");
+        test.current = true;
+      }else{
+        setSticky("bg-opacity-0");
+        test.current = false;
+      }
     }
   };
 
+  console.log(test);
+  console.log(open);
   return (
-    <nav className={`${sticky} flex lg:flex-col flex-row items-center p-4`}>
+    <nav className={`${sticky} flex lg:flex-col flex-row items-center p-4 fixed w-full top-0 z-50 bg-emerald-900 transition-duration-500`}>
       <div className="lg:hidden ml-auto text-white">
         <Popover>
-          <Popover.Button>
-            <Menu size={32} color="white" onClick={() => setOpen(!open)} />
-          </Popover.Button>
-          <Popover.Panel className="absolute w-full top-20 right-1 z-50">
-            <div className="z-50 flex flex-col text-left text-white text-lg font-semibold tracking-tight bg-gray-900 rounded-lg">
-              <div className="p-2 m-6">
-                <Dropdown title="About" subtitles={aboutItems} />
-              </div>
-              <div className="p-2 m-6">Outreach</div>
-              <div className="p-2 m-6">
-                <Dropdown title="Parents" subtitles={parentsItems} />
-              </div>
-              <div className="p-2 m-6">
-                <Dropdown title="Resources" subtitles={resourcesItems} />
-              </div>
-              <div className="p-2 m-6">Contact</div>
-              <div className="p-2 m-6">Sponsors</div>
+            <div className="flex justify-end">
+              <Popover.Button className="focus:outline-none">
+                <Menu size={32} color="white" onClick={() => {
+                  if(!open || test){
+                    setSticky("bg-opacity-100 shadow");
+                  }else{
+                    setSticky("bg-opacity-0");
+                  }
+                  setOpen(!open);
+                  }} />
+              </Popover.Button>
+            </div>
+          <Popover.Panel className="w-full right-1 bg">
+            <div className="z-50 flex flex-col text-right text-white text-base font-semibold tracking-tight">
+              <div className="m-6 mr-2">Home</div>
+              <div className="m-6 mr-2">Learn More</div>
+              <div className="m-6 mr-2">Impact</div>
+              <div className="m-6 mr-2">Benefits</div>
+              <div className="m-6 mr-2 text-emerald-500">About</div>
             </div>
           </Popover.Panel>
         </Popover>
       </div>
 
-      <div className="lg:flex hidden justify-center">
-        <ul className="flex justify-between items-center gap-4 text-white text-lg font-bold">
-          <li className="p-4">Outreach</li>
-          <li className="p-4">Resources</li>
-          <li className="p-4">Contact</li>
-          <li className="p-4">Sponsors</li>
+      <div className="lg:flex hidden w-full justify-end">
+        <ul className="flex justify-between items-center w-2/4 text-white text-base font-semibold pr-5">
+          <li className="p-2">Home</li>
+          <li className="p-2">Learn More</li>
+          <li className="p-2">Impact</li>
+          <li className="p-2">Benefits</li>
+          <li className="p-2 text-emerald-500">About</li>
         </ul>
       </div>
     </nav>
